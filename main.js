@@ -1,5 +1,27 @@
 import App from './App'
 
+// 1. 导入网络请求包
+import { $http } from "@escook/request-miniprogram"
+uni.$http = $http;
+// 1.1 设置请求根路径
+uni.$http.baseUrl = "https://www.uinav.com"
+
+// 2. 设置请求拦截器，在请求开始之前做一些事情
+$http.beforeRequest = (options)=>{
+    uni.showLoading({
+        title:"数据加载中"
+    })
+};
+// 3. 设置响应拦截器，请求完成之后做一些事情
+$http.afterRequest = ()=>{
+    uni.hideLoading()
+}
+
+// 1. 导入数据请求失败之后使用的弹窗
+import showMsg from "./tools/showMsg.js"
+uni.$showMsg = showMsg
+
+
 // #ifndef VUE3
 import Vue from 'vue'
 Vue.config.productionTip = false

@@ -1,0 +1,23 @@
+{
+  "name": "uniapp-program",
+  "version": "1.0.0",
+  "description": "本项目用于学习uniapp",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardChenW/uniApp-program.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RichardChenW/uniApp-program/issues"
+  },
+  "homepage": "https://github.com/RichardChenW/uniApp-program#readme",
+  "keywords": [],
+  "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1"
+  }
+}
