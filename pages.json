@@ -56,6 +56,15 @@
                 }
                 
                 }
+                ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "搜索",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
         }
 	],
