@@ -4,7 +4,7 @@ import App from './App'
 import { $http } from "@escook/request-miniprogram"
 uni.$http = $http;
 // 1.1 设置请求根路径
-uni.$http.baseUrl = "https://www.uinav.com"
+uni.$http.baseUrl = "https://www.uinav.com";
 
 // 2. 设置请求拦截器，在请求开始之前做一些事情
 $http.beforeRequest = (options)=>{
