@@ -43,7 +43,7 @@
                 {
                     "path" : "goods_detail/goods_detail",
                     "style" :{
-                            "navigationBarTitleText": "subpkg",
+                            "navigationBarTitleText": "商品详情",
                             "enablePullDownRefresh": false
                     }
                 }
