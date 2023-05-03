@@ -1,6 +1,5 @@
 <template>
 	<view>
-		
 		<!-- 搜索部分 -->
 		<view class="search-box">
 			<my-search @myClick="gotoSearch"></my-search>
@@ -36,7 +35,11 @@
 </template>
 
 <script>
+	import tabbarBadgeMix from '@/mixins/tabbar-badge.js'
+	
+	
 	export default {
+		mixins:[tabbarBadgeMix],
 		data() {
 			return {
 				windowHeight: 0, // 当前设备可用高度
