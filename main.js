@@ -1,5 +1,9 @@
 import App from './App'
 
+// 导入 vuex
+import store from '@/store/store.js'
+
+
 // 1. 导入网络请求包
 import { $http } from "@escook/request-miniprogram"
 uni.$http = $http;
@@ -56,7 +60,8 @@ try {
 } catch (error) { }
 
 const app = new Vue({
-  ...App
+  ...App,
+	store
 })
 app.$mount()
 // #endif

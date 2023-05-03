@@ -31,10 +31,14 @@
 			<view class="goods-nav">
 				<uni-goods-nav :fill="true" :options="options" :buttonGroup="buttonGroup"  @click="onClick" @buttonClick="buttonClick" />
 			</view>
+			
     </view>
 </template>
 
 <script>
+		import {mapState,mapMutations,mapGetters} from 'vuex';
+		import cart from '../../store/cart';
+	
     export default {
         data() {
             return {
@@ -51,7 +55,7 @@
 									{
 										icon: 'cart',
 										text: '购物车',
-										info: 1
+										info: 0
 									},
 								],
 							buttonGroup: [
@@ -68,6 +72,27 @@
 							]
             };
         },
+				computed:{
+					...mapState("moduleCart",['cart']),
+					...mapGetters("moduleCart",['total'])
+				},
+				watch:{
+					// total(newValue){
+					// 	let findResult = this.options.find(x=>x.text ==='购物车');
+					// 	if (findResult){
+					// 		findResult.info = newValue
+					// 	}
+					// }
+					total:{
+						handler(newValue){
+								let findResult = this.options.find(x=>x.text ==='购物车');
+								if (findResult){
+									findResult.info = newValue
+								}
+						},
+						immediate:true
+					}
+				},
 				methods:{
 					async getGoodsDetail(goods_id){
 						let {data:res} = await uni.$http.get("/api/public/v1/goods/detail",{goods_id:goods_id});
@@ -92,6 +117,21 @@
 							})
 						}
 						
+					},
+					...mapMutations("moduleCart",['addToCart']),
+					buttonClick(e){
+						if(e.content.text === '加入购物车'){
+							let goods = {
+								goods_id:this.goods_info.goods_id,
+								goods_name:this.goods_info.godds_name,
+								goods_price:this.goods_info.goods_price,
+								goods_count:1,
+								goods_small_logo:this.goods_info.goods_small_logo,
+								goods_state:true,
+							}
+							
+							this.addToCart(goods);
+						}
 					}
 				},
 				onLoad(options){
