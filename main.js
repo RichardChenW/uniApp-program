@@ -3,6 +3,8 @@ import App from './App'
 // 导入 vuex
 import store from '@/store/store.js'
 
+import plugin from '@/plugins/tools.js'
+Vue.use(plugin)
 
 // 1. 导入网络请求包
 import { $http } from "@escook/request-miniprogram"
