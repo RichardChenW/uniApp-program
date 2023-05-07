@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import moduleCart from './cart.js'
+import moduleCart from '@/store/cart.js'
+import moduleUser from '@/store/user.js'
 
 Vue.use(Vuex);
 
 let store = new Vuex.Store({
 	modules:{
-		moduleCart
+		moduleCart,
+		moduleUser,
 	}
 });
 

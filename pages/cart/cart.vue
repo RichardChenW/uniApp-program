@@ -1,5 +1,8 @@
 <template>
-	<view>
+	<view class="cart-container" v-if="cart.length !== 0">
+		<!-- 收获地址组件 -->
+		<my-address></my-address>
+		
 		<!-- 商品标题区域 -->
 		<view class="cart-title">
 			<!-- 左侧标题 -->
@@ -10,8 +13,7 @@
 
 		<!-- 循环渲染购物车中的商品信息 -->
 		<uni-swipe-action>
-			<view v-if="cart.length === 0">没有数据</view>
-			<block v-for='(good,i) in cart' :key="i" v-else>
+			<block v-for='(good,i) in cart' :key="i">
 				<uni-swipe-action-item :right-options="options" @click="swiperItemDelete(good)">
 					<my-goods :good="good" :showRadio="true" @radioChange="radioChangeHandler" :showNumberBox="true"
 						@numChange="numberChangeHandler">
@@ -19,6 +21,12 @@
 				</uni-swipe-action-item>
 			</block>
 		</uni-swipe-action>
+		
+		<!-- 使用自定义结算组件 -->
+		<my-settle></my-settle>
+	</view>
+	<view class="imag-container" v-else>
+		<img src="/static/emptyCart.jpg">
 	</view>
 </template>
 
@@ -60,7 +68,11 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	.cart-container {
+		padding-bottom: 50px;
+	}
+	
 	.cart-title {
 		height: 40px;
 		display: flex;
@@ -72,5 +84,11 @@
 			font-size: 14px;
 			margin-left: 10px;
 		}
+	}
+	.imag-container {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
