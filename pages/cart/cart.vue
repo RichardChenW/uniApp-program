@@ -1,5 +1,13 @@
 <template>
 	<view class="cart-container" v-if="cart.length !== 0">
+		
+		<my-test></my-test>
+		
+		
+		
+		
+		
+		
 		<!-- 收获地址组件 -->
 		<my-address></my-address>
 		
