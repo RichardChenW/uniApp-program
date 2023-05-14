@@ -17,6 +17,12 @@ $http.beforeRequest = (options)=>{
     uni.showLoading({
         title:"数据加载中"
     })
+	if(options.url.indexOf("/my/") !== -1){
+		// 为请求添加 Authorization 
+		options.header = {
+			'Authorization':state.moduleUser.token,
+		}
+	}
 };
 // 3. 设置响应拦截器，请求完成之后做一些事情
 $http.afterRequest = ()=>{
